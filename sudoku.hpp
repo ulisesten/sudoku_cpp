@@ -1,7 +1,6 @@
 #ifndef _SUDOKU_HPP_
 #define _SUDOKU_HPP_
 
-#include <math.h>
 #define MAX 9
 
 /**
@@ -16,7 +15,6 @@ class Sudoku {
          * @brief Inicializa la matriz y la imprime en pantalla
         */
         void creaMatriz();
-        void testingInit();
 
         /**
          * @brief valida que el número a ser ingresado no esté ya en

@@ -81,31 +81,3 @@ int Sudoku::getSubCuadricula(int celda){
         return 6;
 
 }
-
-void Sudoku::testingInit(){
-    int matriz[9][9];
-	
-	srand(time(0));
-	
-	for(int i = 0; i<9; i++){
-		for(int j = 0; j<9; j++){
-			matriz[i][j] = 0;
-		}
-	}
-	
-	for(int i = 0; i<31; i++){
-		int ale1 = rand() % 9;
-		int ale2 = rand() % 9;
-		
-		matriz[ale1][ale2] = 1 + rand() % 9;
-	}
-	
-	std::cout<<std::endl;
-	
-	for(int i = 0; i<9; i++){
-		std::cout << std::endl;
-		for(int j = 0; j<9; j++){
-			std::cout << matriz[i][j] << " ";
-		}
-	}
-}

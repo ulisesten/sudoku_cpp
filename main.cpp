@@ -20,7 +20,7 @@ void mainLoop(){
 
     while(opcion != 3){
         sudoku.creaMatriz();
-        //sudoku.testingInit();
+
         std::cout << "Opción 1: Jugar" << std::endl;
         std::cout << "Opción 2: Comprobar" << std::endl;
         std::cout << "Opción 3: Salir" << std::endl;
