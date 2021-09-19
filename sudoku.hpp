@@ -1,6 +1,7 @@
 #ifndef _SUDOKU_HPP_
 #define _SUDOKU_HPP_
 
+#include <math.h>
 #define MAX 9
 
 /**
@@ -35,6 +36,8 @@ class Sudoku {
          * y si el usuario ganó o perdió el juego
         */
         bool comprobar();
+
+        int getSubCuadricula(int celda);
 
         Sudoku();
 
