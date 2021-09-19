@@ -7,18 +7,23 @@ Sudoku::Sudoku(){
 }
 
 void Sudoku::creaMatriz(){
-    int fila, columna;
-    int i,j;
-    bool prensentInFila = false;
-    bool presentInColumn = false;
+
+    int i,j, numero = 0;
+
+    srand(time(0));
 
     for(j = 0; j < MAX; j++){
         for(i = 0; i < MAX; i++){
-            element[i][j] = 0;
+            
+            
+            numero = rand() % 9;
+            
+            if(this->validarInsercion(i, j, numero))
+                element[i][j] = numero;
+            else
+                element[i][j] = 0;
 
-            //if(this->validarNumero())
-
-            std::cout << 0 << "  ";
+            std::cout << element[i][j] << "  ";
         }
         i = 0;
         std::cout << std::endl;
@@ -39,11 +44,11 @@ Sudoku::~Sudoku(){
 
 }
 
-bool Sudoku::validarNumero(int fila, int columna, int numero){
+bool Sudoku::validarInsercion(int fila, int columna, int numero) {
     int i,j;
     
     /*verificar si existe en fila o en columna*/
-    for(i = 0; i < MAX; i++){
+    for(i = 0; i < MAX; i++) {
         if( numero == element[fila][i]) return false;
         if( numero == element[i][columna]) return false;
     }
@@ -56,10 +61,12 @@ bool Sudoku::validarNumero(int fila, int columna, int numero){
         for (i = filaSubCadricula; i < filaSubCadricula + 3; i++) {
 
             if(numero == element[i][j]) return false;
-            
+
         }
         
     }
+
+    return true;
     
 }
 

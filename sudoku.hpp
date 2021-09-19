@@ -21,11 +21,10 @@ class Sudoku {
          * @brief valida que el número a ser ingresado no esté ya en
          * la misma fila ni en la misma columna
         */
-        bool validarNumero(int fila, int columna, int numero);
+        bool validarInsercion(int fila, int columna, int numero);
 
         /**
          * @brief por ahora solo imprime: jugando.
-         * 
          * Esta es la función donde se pedirán las coordenadas y el número a ingresar
         */
         bool jugar();
