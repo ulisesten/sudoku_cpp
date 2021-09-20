@@ -3,18 +3,20 @@
 
 #define MAX 9
 
+
 /**
   * @brief Clase sudoku
   */
 class Sudoku {
     private:
         int element[MAX][MAX];
-        
+
     public:
         /**
          * @brief Inicializa la matriz y la imprime en pantalla
         */
         void creaMatriz();
+        void imprimeMatriz();
 
         /**
          * @brief valida que el número a ser ingresado no esté ya en
@@ -22,11 +24,13 @@ class Sudoku {
         */
         bool validarInsercion(int fila, int columna, int numero);
 
+        bool validarCeldaEditable(int fila, int columna, int numero);
+
         /**
          * @brief por ahora solo imprime: jugando.
          * Esta es la función donde se pedirán las coordenadas y el número a ingresar
         */
-        bool jugar();
+        void jugar();
 
         /**
          * @brief por ahora solo imprime: comprobando..

@@ -1,7 +1,10 @@
-#include <iostream>
+#include <iostream> // <>
 #include "sudoku.hpp"
 
 void mainLoop();
+
+using std::cout;
+using std::cin;
 
 int main() {
 
@@ -14,22 +17,22 @@ int main() {
 void mainLoop(){
     int opcion = 0;
 
-    /*
-     *Creando objeto sudoku */
+    
     Sudoku sudoku;
+    sudoku.creaMatriz();
 
     while(opcion != 3){
-        sudoku.creaMatriz();
+        sudoku.imprimeMatriz();
 
         std::cout << "Opción 1: Jugar" << std::endl;
         std::cout << "Opción 2: Comprobar" << std::endl;
         std::cout << "Opción 3: Salir" << std::endl;
 
         /*capturando elección del usuario*/
-        std::cin >> opcion;
+        cin >> opcion;
 
         /*limpiando consola*/
-        system("cls");
+        system("clear");
 
         switch (opcion)
         {

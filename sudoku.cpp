@@ -15,39 +15,84 @@ void Sudoku::creaMatriz(){
     for(j = 0; j < MAX; j++){
         for(i = 0; i < MAX; i++){
             
-            numero = rand() % 9;
+            numero = rand() % MAX;
             
             if(this->validarInsercion(i, j, numero))
                 element[i][j] = numero;
             else
                 element[i][j] = 0;
 
-            std::cout << element[i][j] << "  ";
+            //std::cout << element[i][j] << "  ";
 
         }
         //i = 0;
+        //std::cout << std::endl;
+    }
+}
+
+void Sudoku::imprimeMatriz(){
+    int i,j;
+    for(j = 0; j < MAX; j++){
+        for(i = 0; i < MAX; i++){
+
+            std::cout << element[i][j] << "  ";
+
+        }
         std::cout << std::endl;
     }
 }
 
-bool Sudoku::jugar(){
-    std::cout << "jugando.." << std::endl;
-    return true;
+void Sudoku::jugar(){
+    int x,y, numero;
+    bool res = false;
+    std::cout << "Ingresa coordenada x: "; std::cin >> x;
+    std::cout << "Ingresa coordenada y: "; std::cin >> y;
+    std::cout << "Ingresa número: "; std::cin >> numero;
+
+    if(this->validarInsercion(x, y, numero)){
+        if(this->validarCeldaEditable(x, y, numero)){
+            res = true;
+
+        } else {
+            res = false;
+            std::cout << "Celda no editable" << std::endl;
+        }
+    } else {
+        std::cout << "El numero ya se encuentra en la cuadrícula" << std::endl;
+    }
+
+    if(res)
+          element[x][y] = numero;
+        
 }
 
 bool Sudoku::comprobar(){
-    std::cout << "comprobando.." << std::endl;
+    int i, j;
+    bool res = false;
+    for(j = 0; j < MAX; j++){
+        for(i = 0; i < MAX; i++){
+            if(this->validarInsercion( i, j, element[i][j])){
+                res = true;
+            } else {
+                res = false;
+            }
+
+        }
+    }
+
+    if(res)
+        std::cout << "Victoria!!!" << std::endl;
+    else
+        std::cout << "Perdiste" << std::endl;
+
     return true;
 }
 
-Sudoku::~Sudoku(){
-
-}
 
 bool Sudoku::validarInsercion(int fila, int columna, int numero) {
     int i,j;
     
-    /*verificar si existe en fila o en columna*/
+    /*verificar si número existe en fila o en columna*/
     for(i = 0; i < MAX; i++) {
         if( numero == element[fila][i]) return false;
         if( numero == element[i][columna]) return false;
@@ -70,6 +115,13 @@ bool Sudoku::validarInsercion(int fila, int columna, int numero) {
     
 }
 
+bool Sudoku::validarCeldaEditable(int fila, int columna, int numero){
+    if(element[fila][columna] != 0)
+        return false;
+
+    return true;
+}
+
 int Sudoku::getSubCuadricula(int celda){
     if(celda < 3)
         return 0;
@@ -79,5 +131,9 @@ int Sudoku::getSubCuadricula(int celda){
 
     else
         return 6;
+
+}
+
+Sudoku::~Sudoku(){
 
 }
