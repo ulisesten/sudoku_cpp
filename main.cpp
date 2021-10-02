@@ -118,9 +118,13 @@ void Sudoku::imprimeMatriz(){
         for(i = 0; i < MAX; i++){
 
             std::cout << element[i][j] << "  ";
+            if(i == 2 || i == 5)
+                std::cout << "  ";
 
         }
         std::cout << std::endl;
+        if(j == 2 || j == 5)
+            std::cout << std::endl;
     }
 }
 
